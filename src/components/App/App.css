@@ -1,0 +1,32 @@
+body{
+    background-color: white;
+    
+}
+.body{
+    width: 1060px;
+    min-height: 1025px;
+    margin: 0 auto;
+    background-color: white;
+    display: block;
+}
+html, body {
+    
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the body (or a main container div if you have one) to use flexbox for centering */
+body {
+    display: block;
+    /* flex-direction: column; */
+    justify-content: center;
+    /* align-items: center; */
+}
+.pagination{
+    text-align: center; 
+    padding: 20px;
+}
+.no-results{
+    text-align: center; 
+    font-size: 20px;
+}
