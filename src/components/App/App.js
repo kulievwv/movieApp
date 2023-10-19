@@ -78,8 +78,8 @@ class App extends React.Component {
     try{
       this.setState({menu: section, currentPage: 1})
       if(section === 'rated'){
-        this.getRatedMovies(1);
         this.setState({keyword: ''})
+        this.getRatedMovies(1);
       }
     }
     catch(error){
@@ -179,7 +179,7 @@ class App extends React.Component {
                       total={this.state.totalRated} 
                       onChange={this.handlePageChange}/>  
     }
-    if(!this.state.isLoaded ){ 
+    if(!this.state.isLoaded){ 
       search = <SearchForm 
                 changeSearchWord={this.changeSearchWord} 
                 searchValue={this.state.keyword}/> 
