@@ -20,8 +20,10 @@ class MovieList extends Component {
             )
         }
         return (
-            <div className='movieList' >
-                {movieCards}
+            <div className='movie-list-container'>
+                <div className='movieList' >
+                    {movieCards}
+                </div>
             </div>
         );
     }
