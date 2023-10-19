@@ -78,7 +78,8 @@ class App extends React.Component {
     try{
       this.setState({menu: section, currentPage: 1})
       if(section === 'rated'){
-        this.getRatedMovies(1)
+        this.getRatedMovies(1);
+        this.setState({keyword: ''})
       }
     }
     catch(error){
@@ -86,7 +87,6 @@ class App extends React.Component {
     }
   }
   rateMovies = (movie, rating) =>{
-    const sessionId = this.sessionId;
     this.movieApi.rateMovie(this.sessionId, movie, rating)
   }
   getRatedMovies = async (page) =>{
@@ -111,7 +111,13 @@ class App extends React.Component {
         }
         }
       catch(error){
-        console.log(error)
+        console.log(error);
+        this.setState({
+          isLoaded: true,
+          ratedList: [],
+          
+          })
+
       }
   }
    componentDidMount() {
