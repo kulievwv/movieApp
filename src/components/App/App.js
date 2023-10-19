@@ -48,7 +48,7 @@ class App extends React.Component {
   }
   searchMovie = async (word, page) =>{
     this.setState({isLoaded: false, keyword: word});
-    console.log('search')
+
     const movieApi = new Api();
     try{
       const data = await movieApi.searchMovies(word, page)
@@ -57,14 +57,12 @@ class App extends React.Component {
                           movieList: data.results,
                           isLoaded: true, 
                         })
-                        console.log('setMovieList')
         }
         else {this.setState({
           isLoaded: true,
           movieList: [],
           totalResults: 0
           })
-          console.log('emptyMovieList')
         }
     
       }
@@ -90,12 +88,10 @@ class App extends React.Component {
   rateMovies = (movie, rating) =>{
     const sessionId = this.sessionId;
     this.movieApi.rateMovie(this.sessionId, movie, rating)
-    console.log({ movie, rating, sessionId})
   }
   getRatedMovies = async (page) =>{
       this.setState({isLoaded: false});
       try{
-        console.log(`Session id: ${this.sessionId}`)
         if(this.sessionId){
           const data = await this.movieApi.getRatedMovies(this.sessionId, page)
           if(data.results && data.results.length > 0 ){
@@ -104,7 +100,6 @@ class App extends React.Component {
                             ratedList: data.results,
                             isLoaded: true, 
                           })
-            console.log(this.state.ratedList)
             
           }
           else {this.setState({
@@ -112,7 +107,6 @@ class App extends React.Component {
             ratedList: [],
             
             })
-            console.log('emptyRatedList')
           }
         }
         }
@@ -124,13 +118,10 @@ class App extends React.Component {
     this.searchMovie('b', 1);
     window.addEventListener('online', this.goOnline);
     window.addEventListener('offline', this.goOffline);
-    
-    console.log('data')
     this.movieApi.getGenres().then(data => {
       if(data && data.size > 0){
         this.setState( {hasGenres: true} )
         this.setState({genresMap: data});
-        console.log('huy')
       }
     });
   }

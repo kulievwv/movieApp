@@ -17,7 +17,6 @@ class MovieCard extends Component{
         return text;
     }
     formatDate = (dateString) =>{
-       // console.log('formatdate')
         if(!dateString){
             return 'no release date'
         }

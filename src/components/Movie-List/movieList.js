@@ -9,7 +9,7 @@ class MovieList extends Component {
         const {movieList, genresMap, keyword, rateMovies} = this.props;
         const movieCards = movieList.map((movie) => {
             return (
-                <MovieCard data={movie} genresMap={genresMap} rateMovies={rateMovies}/>
+                <MovieCard data={movie} genresMap={genresMap} rateMovies={rateMovies} key={movie.id}/>
             ) 
         });
 

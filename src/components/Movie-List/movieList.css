@@ -17,5 +17,7 @@
         grid-template-columns: 1fr;
     }
 }
-
+.no-results{
+    padding-top: 20px;
+}
 

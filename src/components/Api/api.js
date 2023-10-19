@@ -63,7 +63,6 @@ export default class Api {
     async createSession() {
         const guestSessionId = window.localStorage.getItem('guestID')
         if (guestSessionId) {
-        console.log(guestSessionId);
         return guestSessionId
         } else {
         const url = `${this.movieApi}/authentication/guest_session/new?api_key=${this.apiKey}`
@@ -108,7 +107,6 @@ export default class Api {
 
     getRatedMovies = (guestSessionId, page) => {
             const url = `${this.movieApi}/guest_session/${guestSessionId}/rated/movies?api_key=${this.apiKey}&language=ru-RU&page=${page}`
-            console.log(`getRated movies: ${guestSessionId}`)
             return fetch(url)
               .then((response) => {
                 if (response.ok) {
