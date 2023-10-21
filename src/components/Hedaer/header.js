@@ -1,6 +1,7 @@
 import React from "react";
 import { Menu } from 'antd';
 import './header.css'
+import PropTypes from 'prop-types';
 
 export default class Header extends React.Component{
     constructor(props){
@@ -8,6 +9,9 @@ export default class Header extends React.Component{
         this.state ={
             menu: 'search'
         }
+    }
+    propTypes = {
+        changeMenu: PropTypes.func.isRequired
     }
     handleClick = (event) => {
         this.setState({menu: event.key})

@@ -4,7 +4,7 @@ import MovieList from '../Movie-List/movieList';
 import Loading from '../Loading/loading';
 import NoNetwork from '../NoNetwork/noNetwork';
 import SearchForm from '../SearchForm/searchForm';
-import Api from '../Api/api';
+import Api from '../../Api/api';
 import { Pagination } from 'antd';
 import Header from '../Hedaer/header';
 
@@ -131,10 +131,7 @@ class App extends React.Component {
       }
     });
   }
-  componentDidUpdate(){
-    
-  }
-
+ 
   render() {
 
    const movies = this.state.movieList;

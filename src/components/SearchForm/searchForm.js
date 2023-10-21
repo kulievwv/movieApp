@@ -1,6 +1,7 @@
 import React from "react";
 import debounce from 'lodash/debounce';
 import './searchForm.css';
+import PropTypes from 'prop-types';
 export default class SearchForm extends React.Component{
     constructor(props){
         super(props);
@@ -8,6 +9,9 @@ export default class SearchForm extends React.Component{
             searchValue: '',
         }
         this.debouncedSearchMovie = debounce(this.props.changeSearchWord, 700)
+    }
+    propTypes = {
+        changeSearchWord: PropTypes.func.isRequired
     }
     
      handleSearchInputChange = (event) => {

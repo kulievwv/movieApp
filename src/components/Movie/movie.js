@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './movie.css';
 import { format } from 'date-fns';
-import { enGB } from 'date-fns/locale';
+import PropTypes from 'prop-types';
 import { Rate } from 'antd';
 
 
@@ -9,6 +9,20 @@ class MovieCard extends Component{
     state ={
         stars: 0,
     }
+    propTypes = {
+        data: PropTypes.shape({
+            genre_ids: PropTypes.arrayOf(PropTypes.number),
+            title: PropTypes.string,
+            overview: PropTypes.string,
+            release_date: PropTypes.string,
+            id: PropTypes.number,
+            vote_average: PropTypes.number,
+            rating: PropTypes.number,
+            poster_path: PropTypes.string
+        }).isRequired,
+        genresMap: PropTypes.instanceOf(Map).isRequired,
+        rateMovies: PropTypes.func.isRequired
+    };
      textReduce = (text, maxLength) => {
         if(text.length > maxLength){
             text = text.slice(0, maxLength);
