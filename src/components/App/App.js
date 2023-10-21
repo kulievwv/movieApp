@@ -150,8 +150,7 @@ class App extends React.Component {
                       pageSize={20}
                       current={this.state.currentPage}
                       total={this.state.totalResults} 
-                      onChange={this.handlePageChange}/>  
-                   
+                      onChange={this.handlePageChange}/>               
     }
     else if(this.state.isLoaded && this.state.hasGenres && this.state.menu === 'rated'){
       const movieList = this.state.ratedList.reverse()
