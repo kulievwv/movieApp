@@ -64,7 +64,6 @@ class App extends React.Component {
           totalResults: 0
           })
         }
-    
       }
     catch (error) {
       console.error(error);
@@ -100,12 +99,10 @@ class App extends React.Component {
                             ratedList: data.results,
                             isLoaded: true, 
                           })
-            
           }
           else {this.setState({
             isLoaded: true,
             ratedList: [],
-            
             })
           }
         }
@@ -115,9 +112,7 @@ class App extends React.Component {
         this.setState({
           isLoaded: true,
           ratedList: [],
-          
           })
-
       }
   }
    componentDidMount() {
@@ -133,7 +128,6 @@ class App extends React.Component {
   }
  
   render() {
-
    const movies = this.state.movieList;
     let main, pagination, search = ''; 
     if(!this.state.isOnline){   
@@ -142,7 +136,6 @@ class App extends React.Component {
                   searchValue={this.state.keyword}/> 
         main = <NoNetwork />
     }
-    
     else if( this.state.isLoaded && this.state.hasGenres && this.state.menu === 'search'){
       search = <SearchForm 
                 changeSearchWord={this.changeSearchWord} 
@@ -187,7 +180,6 @@ class App extends React.Component {
         <div className="body">
           <Header 
             changeMenu={this.onChangeMenu}
-
            />
             {search}
             {main}
