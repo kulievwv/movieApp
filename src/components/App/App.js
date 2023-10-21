@@ -48,7 +48,6 @@ class App extends React.Component {
   }
   searchMovie = async (word, page) =>{
     this.setState({isLoaded: false, keyword: word});
-
     const movieApi = new Api();
     try{
       const data = await movieApi.searchMovies(word, page)
