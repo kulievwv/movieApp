@@ -20,6 +20,7 @@ class App extends React.Component {
       hasGenres: false,
       isLoaded: false,
       onError: false,
+      errors: [],
       isOnline: window.navigator.onLine,
       currentPage: 1,
       totalResults: 0,
@@ -37,7 +38,6 @@ class App extends React.Component {
       else{
         this.getRatedMovies(page)
       }
-      
       this.setState({currentPage: page});
   }
   goOnline = () =>{
@@ -46,8 +46,15 @@ class App extends React.Component {
   goOffline = () =>{
     this.setState({isOnline: false})
   }
+  onError = (error) =>{
+    this.setState((prevState) => ({
+      errors: prevState.warning.concat(error),
+      onError: false,
+    }))
+  }
   searchMovie = async (word, page) =>{
     this.setState({isLoaded: false, keyword: word});
+
     const movieApi = new Api();
     try{
       const data = await movieApi.searchMovies(word, page)
@@ -65,6 +72,7 @@ class App extends React.Component {
         }
       }
     catch (error) {
+      this.onError(error);
       console.error(error);
     }
   }
@@ -81,6 +89,7 @@ class App extends React.Component {
       }
     }
     catch(error){
+      this.onError(error);
       console.log(error)
     }
   }
@@ -105,13 +114,14 @@ class App extends React.Component {
             })
           }
         }
-        }
+      }
       catch(error){
         console.log(error);
         this.setState({
           isLoaded: true,
           ratedList: [],
           })
+        this.onError(error);
       }
   }
    componentDidMount() {
@@ -150,7 +160,7 @@ class App extends React.Component {
                       pageSize={20}
                       current={this.state.currentPage}
                       total={this.state.totalResults} 
-                      onChange={this.handlePageChange}/>               
+                      onChange={this.handlePageChange}/>  
     }
     else if(this.state.isLoaded && this.state.hasGenres && this.state.menu === 'rated'){
       const movieList = this.state.ratedList.reverse()
@@ -178,6 +188,7 @@ class App extends React.Component {
         <div className="body">
           <Header 
             changeMenu={this.onChangeMenu}
+
            />
             {search}
             {main}
